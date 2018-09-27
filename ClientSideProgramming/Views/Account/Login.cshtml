@@ -1,7 +1,7 @@
 ﻿@using ClientSideProgramming.Models
 @model LoginViewModel
 
-<section id="loginForm">
+<section id="loginForm" class="align-content-lg-center">
 	@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 	{
 		@Html.AntiForgeryToken()

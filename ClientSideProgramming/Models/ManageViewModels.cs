@@ -54,7 +54,7 @@ namespace ClientSideProgramming.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Bekræft nyt password")]
-        [Compare("NewPassword", ErrorMessage = "Det indtastede {0} skal være mindst {2} karakterer lang.")]
+        [Compare("NewPassword", ErrorMessage = "Det indtastede password matcher ikke")]
         public string ConfirmPassword { get; set; }
     }
 
