@@ -1,0 +1,45 @@
+﻿
+@{
+	ViewBag.Title = "Dashboard";
+	@model ClientSideProgramming.Models.IndexViewModel
+}
+<style>
+	.page {
+		display: none;
+	}
+</style>
+<h2>Medlemsområde</h2>
+@{
+	if (User.Identity.IsAuthenticated)
+	{
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-12 col-sm-3 col-lg-3 mobile-nav">
+					<ul class="navbar-nav vertical-center">
+						<li class="nav-item">
+							<button onclick="show('biler')" class="nav-link text-white btn btn-success mt-2">Mine biler</button>
+						</li>
+						<li class="nav-item">
+							<button onclick="show('indstillinger')" class="nav-link text-white btn btn-success mt-2">Indstillinger</button>
+						</li>
+					</ul>
+				</div>
+				<div class="col-12 col-sm-9 col-lg-9">
+					<div style="width:100%">
+						<div id="biler" class="page">
+							<p>biler</p>
+						</div>
+						<div id="indstillinger" class="page">
+							@{
+								Html.RenderPartial("~/Views/Manage/Index.cshtml");
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="~/Scripts/pageShower.js" type="text/javascript"></script>
+	}
+}
+

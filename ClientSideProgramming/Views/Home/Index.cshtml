@@ -1,31 +1,82 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+	ViewBag.Title = "Hjem";
+	ViewBag.Description = "Velkommen til Veteranbil klubbens hjemmeside";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="cover badass">
+	<div class="container">
+		<div class="row p-3">
+			<div class="col-12 col-sm-12 col-xl-9 text-center mt-3 image-hide">
+				<img src="https://www.bookaclassic.dk/content/uploads/2014/05/Veteranbil.jpg" class="img-fluid" style="border-radius: 5px;" alt="Veteranbil" />
+			</div>
+			<div class="col-12 col-sm-12 col-xl-3 text-left jumbotron mt-3">
+				<h1 class="text-left">Veteranbiler</h1>
+				<p>In vitae imperdiet odio, id ullamcorper eros. Phasellus orci mauris, dapibus vulputate vulputate eget, cursus et quam. Aliquam a justo ac odio viverra lobortis. Cras facilisis laoreet rutrum. Donec viverra nunc et iaculis volutpat. Donec.</p>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mere">Læs mere..</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row mt-3">
+		<div class="col-12 col-sm-6 col-lg-4 text-center text-color mb-3">
+			<div class="p-2 full gray">
+				<h2>Hvem er vi?</h2>
+				<blockquote>
+					<p>
+						Sed ac neque tempus, ultrices ipsum quis, laoreet massa. Proin sed lobortis nisl, ac bibendum.
+					</p>
+					<footer> - Bo Jensen </footer>
+				</blockquote>
+			</div>
+		</div>
+		<div class="col-12 col-sm-6 col-lg-4 text-center text-white mb-3 mobile-color">
+			<div class="p-2 full gray">
+				<h2>Hvor holder vi til?</h2>
+				<p> Curabitur nec pulvinar risus, sit amet fringilla quam. Nunc ultricies massa vel malesuada blandit. Proin feugiat magna nisi, nec dignissim ipsum pretium vel. Ut purus.</p>
+			</div>
+		</div>
+		<div class="col-12 col-sm-12 col-lg-4 text-center text-color mb-3">
+			<div class="p-2 full gray">
+				<h2>Links</h2>
+				<div class="row">
+					<div class="col-12">
+						<a class="text-color" href="#">Test 1</a>
+					</div>
+					<div class="col-12">
+						<a class="text-color" href="#"> Test 2</a>
+					</div>
+					<div class="col-12">
+						<a class="text-color" href="#"> Test 3</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12 col-sm-12 col-xl-9 text-center mt-3 image-hide-desktop">
+			<img src="https://www.bookaclassic.dk/content/uploads/2014/05/Veteranbil.jpg" class="img-fluid" alt="Veteranbil" />
+		</div>
+	</div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<!-- Læs mere -->
+<div class="modal fade" id="mere">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Veteranbiler</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>
+					Quisque id nibh nisl. Integer aliquet aliquam magna vitae laoreet. Suspendisse pharetra mi justo, in luctus odio efficitur ac. Maecenas a ullamcorper risus. Pellentesque fermentum euismod orci, vitae pharetra lacus cursus sit amet. Maecenas nunc nisi, imperdiet ut interdum ac, dapibus vel urna. Mauris quis arcu vulputate, placerat neque id, auctor nisi. Nullam at odio interdum, facilisis tellus eget, imperdiet sem. Nam dignissim dictum bibendum. Praesent at eleifend tellus. Ut consequat sed sapien tempor egestas. Cras aliquet, enim ut sollicitudin interdum, lorem enim volutpat urna, ac suscipit neque risus id libero. Donec tincidunt ex nisl, sed malesuada metus viverra nec. Fusce blandit, metus quis maximus tempus, nunc sem dictum quam, eu posuere felis diam sed libero.
+
+					Nullam ultricies enim turpis, vel blandit dolor lacinia rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac risus pretium, laoreet turpis in, ultrices dolor. Suspendisse at nisl ut tellus fermentum sagittis a at justo. Duis ultricies eget erat consectetur tincidunt. Cras vehicula mi at dui tincidunt, a tristique arcu bibendum. Nullam iaculis commodo ullamcorper. In sit amet elementum turpis. Fusce ut ultricies justo, non tincidunt neque.
+				</p>
+			</div>
+		</div>
+	</div>
 </div>

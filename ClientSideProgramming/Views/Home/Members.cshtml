@@ -1,0 +1,25 @@
+﻿@using ClientSideProgramming.Models;
+@{
+	ViewBag.Title = "Medlemmer";
+}
+
+<div class="container-fluid badass p-2 mb-3">
+	<div class="row">
+		<div class="col-12 col-sm-12 col-lg-12 text-center text-white mt-2 mobile">
+			<h2>Medlemmer</h2>
+			<p>Nedenfor kan du se medlemmerne i Veteranbil klubben</p>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row text-center">
+		@{
+			var dbContext = new ApplicationDbContext();
+
+			foreach (ApplicationUser user in dbContext.Users.ToList())
+			{
+				Html.RenderPartial("MemberView", user);
+			};
+		}
+	</div>
+</div>

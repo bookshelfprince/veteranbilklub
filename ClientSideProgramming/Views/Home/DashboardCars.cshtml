@@ -1,0 +1,78 @@
+﻿@model ClientSideProgramming.Models.Car
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using System.Web.Mvc;
+@using ClientSideProgramming.Models;
+@using ClientSideProgramming.DBActions;
+
+@{
+	Layout = null;
+	List<string> Manufactors = new ClientSideProgramming.Types.Manufactors();
+	var currentUserId = User.Identity.GetUserId();
+	var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+	var currentUser = manager.FindById(currentUserId);
+}
+@if (User.Identity.IsAuthenticated)
+{
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-12 col-sm-6 col-lg-4 mt-1 d-flex align-items-stretch">
+				<div class="card" style="width:100%">
+					<a onclick="showpage('addCar')">
+						<div class="internalPage" id="plusButton">
+							<img class="card-img-top" src="https://images.emojiterra.com/twitter/512px/2795.png" alt="Card image">
+							<div class="card-body">
+								<h4 class="card-title">Tilføj</h4>
+								<p class="card-text">Ny bil</p>
+							</div>
+						</div>
+					</a>
+					<div class="internalPage" id="addCar" style="display: none;">
+						<section id="saveToDB">
+							@using (Ajax.BeginForm("SaveToDatabase", "Home", new AjaxOptions {HttpMethod="POST" }, new { @class = "form-horizontal", role = "form" }))
+							{
+								@Html.AntiForgeryToken()
+								<p class=" control-label">Model</p>
+								@Html.TextBoxFor(m => m.Name, new { @class = "form-control", @name = "name" })
+								<p class=" control-label">Årgang</p>
+								@Html.TextBoxFor(m => m.Year, new { @class = "form-control", @name = "Year" })
+								<p class=" control-label">Billede(http://example.com/image.jpg)</p>
+								@Html.TextBoxFor(m => m.Image, new { @class = "form-control", @id = "Image" })
+								<p class="control-label">Fabrikant</p>
+								@Html.DropDownList("Manufactor", new SelectList(Manufactors), "Vælg fabrikant", new { @class = "form-control", @id = "Manufactor" })
+								<input type="submit" id="submit" name="submit" value="Opret" onclick="CreateCar(this)" />
+							}
+						</section>
+					</div>
+				</div>
+			</div>
+			<div class="posts">
+			</div>
+			@{
+				CarDB carDB = new CarDB();
+				foreach (Car Car in carDB.GetCars(User.Identity.GetUserName()))
+				{
+					Html.RenderPartial("CarView", Car);
+				};
+			}
+		</div>
+	</div>
+}
+
+<script type="text/javascript">
+	function CreateCar(formSubmitted) {
+		var $form = $(formSubmitted).parents('form');
+		var formData = {
+			'Name': $('input[name=Name]').val(),
+			'Year': $('input[name=Year]').val(),
+			'Image': $('input[name=Image]').val(),
+			'Manufactor': $('input[name=Manufactor]').val(),
+		};
+
+		var toInsert = '<div class="col-12 col-sm-6 col-lg-4 mt-1 d-flex align-items-stretch"> <div class="card" style="width:100%"> <img class="card-img-top" src="' + formData.Image + '" alt="Card image"> <div class="card-body"> <h4 class="card-title">' + formData.Name + '</h4> <p class="card-text">Fabrikant: ' + formData.Manufactor + '<br/>Årgang: ' + formData.Year + '</p> </div> </div> </div >';
+		showpage('plusButton');
+		$(toInsert).insertAfter(".posts");
+	}
+</script>
+
+<script src="~/Scripts/internalShower.js" type="text/javascript"></script>

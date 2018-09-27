@@ -1,30 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using ClientSideProgramming.DBActions;
+using ClientSideProgramming.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Web.Mvc;
 
 namespace ClientSideProgramming.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index() => View();
+
+        public ActionResult Members() => View();
+
+        public ActionResult Cars() => View();
+
+        public ActionResult Spareparts() => View();
+
+        public ActionResult DashboardCars() => View();
+
+        [HttpPost]
+        public void SaveToDatabase(Car model)
         {
-            return View();
+            Car car = new Car()
+            {
+                Name = model.Name,
+                Year = model.Year,
+                Manufactor = model.Manufactor,
+                Image = model.Image
+
+            };
+
+            CarDB carDB = new CarDB();
+            carDB.AddCar(car, User.Identity.GetUserName());
         }
-
-        public ActionResult About()
+        public ActionResult LoggedIn()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            if (User.Identity.IsAuthenticated)
+                return View("Dashboard");
+            else
+                return View("Login");
         }
-
-        public ActionResult Contact()
+        public ActionResult Dashboard()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            if (User.Identity.IsAuthenticated)
+                return View("Dashboard");
+            else
+                return View("Login");
         }
     }
 }

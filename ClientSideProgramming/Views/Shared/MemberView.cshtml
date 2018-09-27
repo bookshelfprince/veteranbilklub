@@ -1,0 +1,11 @@
+﻿@model  ClientSideProgramming.Models.ApplicationUser
+<div class="col-4 col-sm-3 col-lg-2">
+	<div class="card" style="width:100%">
+		<img class="card-img-top" src="@Html.Raw(Model.Image)" alt="Card image">
+		<div class="card-body">
+			<h4 class="card-title">@Html.Raw(Model.FirstName + " " + Model.LastName)</h4>
+			<p class="card-text">@Html.Raw(Model.ProfileText)</p>
+			<a href="#" class="btn btn-primary">Se profil</a>
+		</div>
+	</div>
+</div>

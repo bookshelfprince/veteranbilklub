@@ -1,0 +1,10 @@
+﻿@model ClientSideProgramming.Models.Car
+<div class="col-12 col-sm-6 col-lg-4 mt-1 d-flex align-items-stretch">
+	<div class="card" style="width:100%">
+			<img class="card-img-top" src="@Html.Raw(Model.Image)" alt="Card image">
+			<div class="card-body">
+				<h4 class="card-title">@Html.Raw(Model.Name)</h4>
+				<p class="card-text">@Html.Raw("Fabrikant: " + Model.Manufactor)<br /> @Html.Raw("Årgang: " + Model.Year)</p>
+			</div>
+	</div>
+</div>

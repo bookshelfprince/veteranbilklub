@@ -1,0 +1,25 @@
+﻿@using ClientSideProgramming.DBActions;
+@using ClientSideProgramming.Models;
+@{
+	ViewBag.Title = "Biler";
+}
+
+<div class="container-fluid badass p-2 mb-3">
+	<div class="row">
+		<div class="col-12 col-sm-12 col-lg-12 text-center text-white mt-2 mobile">
+			<h2>Biler i klubben</h2>
+			<p>Nedenfor kan du se medlemmernes biler der indgår i Veteranbil klubben</p>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row text-center">
+		@{
+			CarDB carDB = new CarDB();
+			foreach (Car Car in carDB.GetAllCars())
+			{
+				Html.RenderPartial("CarView", Car);
+			};
+		}
+	</div>
+</div>
