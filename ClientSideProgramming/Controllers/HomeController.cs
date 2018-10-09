@@ -33,6 +33,20 @@ namespace ClientSideProgramming.Controllers
             CarDB carDB = new CarDB();
             carDB.AddCar(car, User.Identity.GetUserName());
         }
+        [HttpPost]
+        public void DeleteCar(Car car)
+        {
+            Car newCar = new Car
+            {
+                Name = car.Name,
+                Image = car.Image,
+                Year = car.Year,
+                Manufactor = car.Manufactor
+            };
+
+            CarDB carDB = new CarDB();
+            carDB.DeleteCar(newCar, User.Identity.GetUserName());
+        }
         public ActionResult LoggedIn()
         {
             if (User.Identity.IsAuthenticated)

@@ -1,10 +1,16 @@
 ﻿@model ClientSideProgramming.Models.Car
-<div class="col-12 col-sm-6 col-lg-4 mt-1 d-flex align-items-stretch">
+@{
+	var stringToTrim = Model.Name + Model.Manufactor + Model.Year + Model.Image;
+	var stringTrimmed = stringToTrim.Trim();
+}
+<div id="@stringTrimmed" draggable="true" ondragstart="drag(event)" class="col-12 col-sm-6 col-lg-4 mt-1 d-flex align-items-stretch">
 	<div class="card" style="width:100%">
-			<img class="card-img-top" src="@Html.Raw(Model.Image)" alt="Card image">
-			<div class="card-body">
-				<h4 class="card-title">@Html.Raw(Model.Name)</h4>
-				<p class="card-text">@Html.Raw("Fabrikant: " + Model.Manufactor)<br /> @Html.Raw("Årgang: " + Model.Year)</p>
-			</div>
+		<img class="card-img-top selected modelImage" src="@Html.Raw(Model.Image)" alt="Card image">
+		<div class="card-body">
+			<h4 class="card-title selected modelName">@Html.Raw(Model.Name)</h4>
+			<p class="card-text">@Html.Raw("Fabrikant: " + Model.Manufactor)<br /> @Html.Raw("Årgang: " + Model.Year)</p>
+			<p class="selected modelYear" style="display: none;">@Html.Raw(Model.Year)</p>
+			<p class="selected modelManufactor" style="display: none">@Html.Raw(Model.Manufactor)</p>
+		</div>
 	</div>
 </div>

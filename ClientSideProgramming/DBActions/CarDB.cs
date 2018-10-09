@@ -22,6 +22,19 @@ namespace ClientSideProgramming.DBActions
             conn.Close();
         }
 
+        public void DeleteCar(Car car, string Username)
+        {
+            conn = new SqlConnection(connetionString);
+            conn.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            string sql = "Delete from dbo.Cars WHERE Username='" + Username.ToString() + "' AND Name='" + car.Name.ToString() + "'";
+            SqlCommand command = new SqlCommand(sql, conn);
+            adapter.InsertCommand = command;
+            adapter.InsertCommand.ExecuteNonQuery();
+            command.Dispose();
+            conn.Close();
+        }
+
         public List<Car> GetCars(string Username)
         {
             conn = new SqlConnection(connetionString);
