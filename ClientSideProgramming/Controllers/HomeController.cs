@@ -33,19 +33,12 @@ namespace ClientSideProgramming.Controllers
             CarDB carDB = new CarDB();
             carDB.AddCar(car, User.Identity.GetUserName());
         }
+        public class dataToPost { public string image; }
         [HttpPost]
-        public void DeleteCar(Car car)
+        public void DeleteCar(dataToPost car)
         {
-            Car newCar = new Car
-            {
-                Name = car.Name,
-                Image = car.Image,
-                Year = car.Year,
-                Manufactor = car.Manufactor
-            };
-
             CarDB carDB = new CarDB();
-            carDB.DeleteCar(newCar, User.Identity.GetUserName());
+            carDB.DeleteCar(car.image, User.Identity.GetUserName());
         }
         public ActionResult LoggedIn()
         {

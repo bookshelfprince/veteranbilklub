@@ -4,12 +4,12 @@
 
 function drag(ev) {
 	$("#delete").show();
-	ev.dataTransfer.setData("id", ev.target.id);
+	ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
 	ev.preventDefault();
-	var id = ev.dataTransfer.getData("id");
+	var id = ev.dataTransfer.getData("text");
 	var element = document.getElementById(id);
 	deleteFromDB(element);
 	element.parentNode.removeChild(element);
