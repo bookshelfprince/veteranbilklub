@@ -11,22 +11,25 @@ namespace ClientSideProgramming.DBActions
 
         public void AddCar(Car car, string Username)
         {
-            conn = new SqlConnection(connetionString);
-            conn.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            string sql = "Insert into dbo.Cars(Name,Year,Manufactor,Image,Username) Values('" + car.Name + "', '" + car.Year + "', '" + car.Manufactor + "', '" + car.Image + "', '" + Username + "')";
-            SqlCommand command = new SqlCommand(sql, conn);
-            adapter.InsertCommand = command;
-            adapter.InsertCommand.ExecuteNonQuery();
-            command.Dispose();
-            conn.Close();
+            if (car.Image != null)
+            {
+                conn = new SqlConnection(connetionString);
+                conn.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                string sql = "Insert into dbo.Cars(Name,Year,Manufactor,Image,Username) Values('" + car.Name + "', '" + car.Year + "', '" + car.Manufactor + "', '" + car.Image + "', '" + Username + "')";
+                SqlCommand command = new SqlCommand(sql, conn);
+                adapter.InsertCommand = command;
+                adapter.InsertCommand.ExecuteNonQuery();
+                command.Dispose();
+                conn.Close();
+            }
         }
-        public void DeleteCar(string car, string Username)
+        public void DeleteCar(string image, string Username)
         {
             conn = new SqlConnection(connetionString);
             conn.Open();
             SqlDataAdapter adapter = new SqlDataAdapter();
-            string sql = "Delete from dbo.Cars WHERE Username='" + Username.ToString() + "' AND Image='" + car.ToString() + "'";
+            string sql = "Delete from dbo.Cars WHERE [Username] LIKE'" + Username + "' AND [Image] LIKE  '" + image + "'";
             SqlCommand command = new SqlCommand(sql, conn);
             adapter.InsertCommand = command;
             adapter.InsertCommand.ExecuteNonQuery();

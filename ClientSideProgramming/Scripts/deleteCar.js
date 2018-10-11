@@ -6,14 +6,12 @@
 	//manufactor = $(e).children("card").children("card-body").children(".modelManufactor").text;
 
 	if (image != null) {
-		var dataToPost = {};
-		dataToPost.image = image;
 		$.ajax({
 			type: "POST",
 			url: "/Home/DeleteCar",
-			data: JSON.stringify(dataToPost),
-			contentType: "application/json;",
-			dataType: "json",
+			data: {image: image},
+			//contentType: "application/json;",
+			//dataType: "json",
 			success: function (response) {
 				// do nothing
 			},
